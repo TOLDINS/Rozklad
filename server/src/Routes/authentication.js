@@ -1,6 +1,6 @@
 const passport = require("passport");
 const router = require("express").Router();
-const controller = require("./controller");
+const controller = require("../Controllers/authentication");
 
 const authenticate = passport.authenticate(["local"], {
   session: true,

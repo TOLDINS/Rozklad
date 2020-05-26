@@ -1,14 +1,12 @@
-const path = require("path");
-const User = require("../components/user/model");
+const User = require("../Models/User");
 
-const view = path.join(__dirname, "views", "auth");
 const viewTypes = {
   signIn: "signIn",
   signUp: "signUp",
 };
 
 module.exports.getSignIn = async (req, res) => {
-  res.render(view, { title: "Вхід", type: viewTypes.signIn });
+  res.render("auth", { title: "Вхід", type: viewTypes.signIn });
 };
 
 module.exports.postSignIn = async (req, res) => {
@@ -16,12 +14,12 @@ module.exports.postSignIn = async (req, res) => {
 };
 
 module.exports.getSignUp = async (req, res) => {
-  res.render(view, { title: "Реєстрація", type: viewTypes.signUp });
+  res.render("auth", { title: "Реєстрація", type: viewTypes.signUp });
 };
 
 module.exports.postSignUp = async (req, res) => {
-  const { f_name, s_name, th_name, phone, email, password, password2 } = req.body;
-  const data = { f_name, s_name, th_name, phone, email };
+  const { name,user_type, group, email, password, password2 } = req.body;
+  const data = { name, user_type, group, email };
 
   const user = await User.findOne({ "local.email": email });
 
@@ -41,10 +39,9 @@ module.exports.postSignUp = async (req, res) => {
     });
   } else {
     const userData = {
-      f_name,
-      s_name,
-      th_name,
-      phone,
+      name,
+      user_type,
+      group,
       local: { email, password },
     };
     await new User(userData).save();
