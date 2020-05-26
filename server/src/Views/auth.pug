@@ -1,0 +1,41 @@
+- const action = type === "signIn" ? "signin": type === "signUp" ? "signup" : "/";
+
+mixin signInInfo
+  div
+    label Ім'я:
+    input(type="text" name="name" value=name required)
+  div
+    label Тип:
+    input(type="text" name="s_name" value=s_name required)
+  div
+    label Група:
+    input(type="text" name="th_name" value=th_name required)
+
+doctype html
+html(lang="uk")
+  head
+    title=title
+  body
+    if message
+      p=message
+    form(action=action method="post" autocomplete="off")
+      case type
+        when 'signUp'
+          +signInInfo
+      - if (type === 'signIn' || type === 'signUp')
+        div
+          label E-mail:
+          input(type="email" name="email" value=email required)
+        div
+          label Пароль:
+          input(type="password" name="password" required)
+      case type
+        when 'signUp'
+          div
+            label Пароль ще раз:
+            input(type="password" name="password2" required)
+          a(href="/auth/signin") Увійти
+        when 'signIn'
+          a(href="/auth/signup") Реєстрація
+
+      button(type="submit")=title
