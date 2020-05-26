@@ -1,0 +1,5 @@
+{
+    "port":3000,
+    "db_connet":"mongodb://192.168.0.4:1337/Scheduler"
+
+}
