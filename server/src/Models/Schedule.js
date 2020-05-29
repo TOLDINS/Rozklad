@@ -1,21 +1,49 @@
 const mongoose=require('mongoose');
 const Schema=mongoose.Schema;
-const ScheduleSchema=new Schema({
-    num_kaf:String,
-    name_kaf:String,
-    lesson_name:String,
-    teacher:{
-        type:Array,
-        of:String
-    },
-    group:String,
-    class_room:{
-        type:Array,
-        of:String
-    },
-    date:Date,
-    index_number:String
-
-
-})
+const ScheduleSchema = new Schema({
+  cafedra: {
+    type: String,
+    default: null,
+  },
+  subject: {
+    type: String,
+    default: null,
+  },
+  lesson_type: {
+    type: String,
+    default: null,
+  },
+  teacher1: {
+    type: String,
+    default: null,
+  },
+  teacher1_1: {
+    type: String,
+    default: null,
+  },
+  teacher2: {
+    type: String,
+    default: null,
+  },
+  teacher2_1: {
+    type: String,
+    default: null,
+  },
+  couple: {
+    type: Number,
+    default: null,
+  },
+  date: {
+    type: Date,
+    default: null,
+  },
+  group: {
+    type: String,
+    default: null,
+  },
+  school_week: {
+    type: Number,
+    default: null,
+  },
+});
 module.exports=mongoose.model('schedule',ScheduleSchema);
