@@ -5,17 +5,13 @@ const viewTypes = {
   signUp: "signUp",
 };
 
-module.exports.getSignIn = async (req, res) => {
-  res.render("auth", { title: "Вхід", type: viewTypes.signIn });
-};
+
 
 module.exports.postSignIn = async (req, res) => {
   res.redirect("/admin");
 };
 
-module.exports.getSignUp = async (req, res) => {
-  res.render("auth", { title: "Реєстрація", type: viewTypes.signUp });
-};
+
 
 module.exports.postSignUp = async (req, res) => {
   const { name,user_type, group, email, password, password2 } = req.body;
