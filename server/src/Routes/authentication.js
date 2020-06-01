@@ -13,8 +13,8 @@ const mustAuthenticated = (req, res, next) => {
   next();
 };
 
-router.route("/signin").get(controller.getSignIn).post(authenticate, controller.postSignIn);
-router.route("/signup").get(controller.getSignUp).post(controller.postSignUp);
+router.post("/signin",/*authenticate,*/ controller.postSignIn);
+router.post("/signup",controller.postSignUp);
 router.post("/logout", mustAuthenticated, controller.postLogout);
 
 module.exports = router;

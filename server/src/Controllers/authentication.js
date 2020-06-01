@@ -8,7 +8,9 @@ const viewTypes = {
 
 
 module.exports.postSignIn = async (req, res) => {
-  res.redirect("/admin");
+   //res.set("Access-Control-Allow-Origin", "*");
+  console.log(req)
+  return res.send(JSON.stringify({resp:"hello"}));
 };
 
 

@@ -1,3 +1,4 @@
+const path = require('path')
 const passport = require("passport");
 const router = require("express").Router();
 const controller = require("../Controllers/schoolPart");
